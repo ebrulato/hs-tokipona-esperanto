@@ -246,6 +246,7 @@ dico = Map.fromList
         , ("jan seme" , Word "jan seme" "kiu" "kiu" "kiu" "kiu-estas" "kiu-estas")
         , ("jan sewi", Word "jan sewi" "dio" "dia" "die" "dio-estas" "dio-farigas")
         , ("jan suli", Word "jan suli" "plenkreskulo" "plenkreska" "plenkreske" "plenkreskigxas" "plenkreskulfarigas")
+        , ("jan toki", Word "jan toki" "parolisto" "parolista" "paroliste" "parolisto-estas" "parolisto-farigas")
         , ("jan unpa", Word "jan unpa" "amoranto" "amoranta" "amorante" "amorantigxas" "amorantigas")
         , ("jan utala", Word "jan utala" "batalisto" "batalista" "bataliste" "batalistigxas" "batalistigas")
         , ("jan alasa", Word "jan alasa" "cxasisto/kolektisto" "cxasista/kolektista" "cxasiste/kolektiste" "cxasistas/kolektistas" "cxasistas/kolektistas")
@@ -354,6 +355,8 @@ dico = Map.fromList
         , ("tenpo suno pini la", La "hieraux")
         , ("tenpo suno ni la", La "hodiaux")
 
+        , ("toki utala", Word "toki utala" "debato" "debata" "debate" "debatas" "debatas")
+
         , ("tomo pi telo nasa", Word "tomo pi telo nasa" "drinkejo" "drinkeja" "drinkeje" "drinkejas" "drinkejigas")
         , ("tomo sona", Word "tomo sona" "lernejo" "lerneja" "lerneje" "lernejas" "lernejigas")
         , ("tomo tawa", Word "tomo tawa" "veturilo" "vetura" "veture" "veturas" "veturigas")
@@ -390,6 +393,16 @@ dico = Map.fromList
         -- Religioj
         , ("Kolisu", Word "Kolisu" "Kristiano" "kristiana" "kristiane" "kristianas" "kristiano-farigas")
         , ("Silami", Word "Silami" "Islamo" "islama" "islame" "islamigxas" "islamigas")
+
+        -- Star War
+        , ("Kese", Word "Kese" "Kashyyko" "kashyyka" "kashyyke" "kashyykas" "kashyyko-farigas")
+        , ("ma Kese", Word "ma Kese" "Kashyyko" "kashyyka" "kashyyke" "kashyykas" "kashyyko-farigas")
+        , ("Ento", Word "Ento" "Endoro" "endora" "endore" "endoras" "endoro-farigas")
+        , ("ma Ento", Word "ma Ento" "Endoro" "endora" "endore" "endoras" "endoro-farigas")
+        , ("jan Waki", Word "jan Waki" "Wookio" "wookia" "wookie" "wookio-estas" "wookio-farigas")
+        , ("jan Iwa", Word "jan Iwa" "Ewoko" "ewoka" "ewoke" "ewoko-estas" "ewoko-farigas")
+        
+
 
         -- Continents	
 -- ma Amelika	Americas
@@ -742,6 +755,7 @@ internalTranslate useDico phrase =
 
 
 fixNanpa :: [String] -> String
+fixNanpa [] = ""
 fixNanpa strs =
     snd' $
     foldl (\(vacc, sacc, akuzativo, lasto) (v, s, a) -> 

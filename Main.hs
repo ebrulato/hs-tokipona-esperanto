@@ -1,6 +1,82 @@
 module Main where
 
-import TokiPona2esperanto
+import TokiPonaToEsperanto
+import TokiPona.Version
+--import Control.Monad
+--import Data.Char
+import Data.List
+import System.Console.GetOpt
+import System.Environment
+import System.Exit
+import System.IO
+--import Text.Printf
+
+data Flag
+        = Dictionary            -- -d
+        | Lang String           -- --lang=xx
+        | FileIn String         -- --in=File
+        | FileOut String        -- --out=File 
+        | Help                  -- --help
+        | Version               -- -v
+        deriving (Show, Eq)
+
+
+flags =
+       [Option ['d']    []          (NoArg Dictionary)         "Use the conpound words tokipona dictionnary."
+       ,Option []       ["lang"]    (ReqArg Lang "xx")         "google tranlation in xx (ISO), if supported (SOON)"
+       ,Option []       ["in"]      (ReqArg FileIn "FILE")     "input file with a tokipona text."
+       ,Option []       ["out"]     (ReqArg FileOut "FILE")    "output file with the translation. (SOON)"
+       ,Option ['h']    ["help"]    (NoArg Help)               "Print this help message"
+       ,Option ['v']    []          (NoArg Version)            "Print the version of the tool"
+       ]
+
+parse prgName argv = case getOpt Permute flags argv of
+
+        (args,w,[]) -> do
+            let words = if null w then [] else w
+            if Help `elem` args
+            then do hPutStrLn stderr (usageInfo (header prgName) flags)
+                    exitWith ExitSuccess
+            else if Version `elem` args 
+            then do hPutStrLn stdout (prgName ++ " " ++ TokiPona.Version.version)
+                    exitWith ExitSuccess
+            else return (nub args, words)
+
+        (_,_,errs)      -> do
+            hPutStrLn stderr (concat errs ++ usageInfo (header prgName) flags)
+            exitWith (ExitFailure 1)
+
+        where header prgName = "Usage: "++ prgName ++ " [-dh] [-lang=fr|en|...] [-in=PATH] [-out=PATH] [word ...]"
+
+
+
+doTranslation args = if Dictionary `elem` args then translateWithDico else translate
+
+getInFiles :: [Flag] -> Maybe String
+getInFiles [] = Nothing
+getInFiles (flag:flags) = 
+    case flag of 
+        FileIn path -> Just path 
+        _ -> getInFiles flags
+
+getOutFiles :: [Flag] -> Maybe String
+getOutFiles [] = Nothing
+getOutFiles (flag:flags) = 
+    case flag of 
+        FileOut path -> Just path 
+        _ -> getOutFiles flags
+
+source :: [Flag] -> [String] -> IO [String]
+source args words = 
+    case (getInFiles args, getOutFiles args) of 
+        (Just pathIn, _) -> fmap lines (readFile pathIn) 
+        (_, _) -> return ([unwords words])
 
 main :: IO ()
-main = putStrLn $ translate "toki pona"
+main = do
+    prgName <- getProgName
+    (args, words) <- getArgs >>= parse prgName
+    --putStrLn $ "Flags: " ++ show args
+    --putStrLn $ "Words: " ++ show words
+    src <- source args words
+    putStrLn $ unlines $ map (doTranslation args) src

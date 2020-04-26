@@ -19,7 +19,6 @@ testWord :: String -> Bool -> Test
 testWord word result =
     TestCase $ assertEqual word result $ isValidExternalWord word
 
-
 lesson3 :: Test
 lesson3 = TestList 
     [TestLabel "Lesson #3 http://tokipona.net/tp/janpije/okamasona3.php" $ TestList [
@@ -44,6 +43,8 @@ lesson3 = TestList
             , check "suno li suli" "suno grandas"
             , check "mi suli" "mi grandas"
             , check "jan li moku" "persono mangxas"
+            , checkall "\n" "" ""
+            , checkall "" "" ""
         ]]
 
 lesson4 :: Test

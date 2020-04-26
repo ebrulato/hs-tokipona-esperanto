@@ -50,9 +50,28 @@ and you wil have something like :
 
 > Cases: 810  Tried: 810  Errors: 0  Failures: 0
 
-## Compile the CLI version
+## The CLI version
 
-TODO
+To compile an install the CLI version, 
+
+> $> cabal install tp-eo --installdir=**your bin path**
+
+Now you can use the command line interface of the tool
+
+> $> tp-eo jan pona li wile moku
+
+> bona persono volas mangxi
+
+And you can use the dictionary for a better translation.
+
+> $> tp-eo jan pona li wile moku -d 
+
+You can also translate some pure Tokipona text with the ***--in*** parameter.
+
+> $> tp-eo --in=./Text/lesson19.txt -d
+
+> ***amiko*** volas mangxi
+
 
 ## Compile the Web Service version 
 
@@ -69,6 +88,5 @@ TODO
 
 ## TODO List:
 
-* Initialize the CLI
 * Integrates Google Translate tool
 * Esperanto version of this file
