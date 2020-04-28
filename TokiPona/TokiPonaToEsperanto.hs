@@ -1,4 +1,4 @@
-module TokiPonaToEsperanto (translate, translateWithDico, isValidExternalWord) where 
+module TokiPona.TokiPonaToEsperanto (translate, translateWithDico, isValidExternalWord) where 
 
 import qualified Data.Map as Map
 import qualified Data.List as List

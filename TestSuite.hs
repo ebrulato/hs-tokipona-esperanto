@@ -1,7 +1,7 @@
 module Main where
 
 import Test.HUnit
-import TokiPonaToEsperanto
+import TokiPona.TokiPonaToEsperanto
 
 check :: String -> String -> Test
 check tokipona esperanto =   

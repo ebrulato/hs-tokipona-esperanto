@@ -4,7 +4,7 @@ The pupose of this project is to provide an automatic translation from Tokipona 
 
 ## More than 800 tests
 
-I used the exscellent lessons of [***"jan Pije"***](http://tokipona.net/tp/janpije/okamasona.php) to implement this module. I think that in 80% of the cases, the original meaning is well keeped. I use also __google translate__ to check if the esperanto version is well translated or not and, moost of the time the result is not so bad. 
+I used the excellent lessons of [***"jan Pije"***](http://tokipona.net/tp/janpije/okamasona.php) to implement this module. I think that in 80% of the cases, the original meaning is well keeped. I use also __google translate__ to check if the esperanto version is well translated or not and, moost of the time the result is not so bad. 
 
 This version is a first release, and I hope that I will be able to enhance it in the future.
 

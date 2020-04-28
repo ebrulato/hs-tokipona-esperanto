@@ -1,6 +1,6 @@
 module Main where
 
-import TokiPonaToEsperanto
+import TokiPona.TokiPonaToEsperanto
 import TokiPona.Version
 --import Control.Monad
 --import Data.Char
@@ -10,6 +10,9 @@ import System.Environment
 import System.Exit
 import System.IO
 --import Text.Printf
+import Google.Translate
+
+keyName = "API_KEY_GOOGLE_TRANSLATE"
 
 data Flag
         = Dictionary            -- -d
@@ -23,7 +26,7 @@ data Flag
 
 flags =
        [Option ['d']    []          (NoArg Dictionary)         "Use the conpound words tokipona dictionnary."
-       ,Option []       ["lang"]    (ReqArg Lang "xx")         "google tranlation in xx (ISO), if supported (SOON)"
+       ,Option []       ["lang"]    (ReqArg Lang "xx")         "google tranlation in xx (iso-639-1), if supported (SOON)"
        ,Option []       ["in"]      (ReqArg FileIn "FILE")     "input file with a tokipona text."
        ,Option []       ["out"]     (ReqArg FileOut "FILE")    "output file with the translation. (SOON)"
        ,Option ['h']    ["help"]    (NoArg Help)               "Print this help message"
@@ -50,7 +53,14 @@ parse prgName argv = case getOpt Permute flags argv of
 
 
 
-doTranslation args = if Dictionary `elem` args then translateWithDico else translate
+doTranslation useDico = if useDico then translateWithDico else TokiPona.TokiPonaToEsperanto.translate
+
+getLang :: [Flag] -> Maybe String
+getLang [] = Nothing
+getLang (flag:flags) = 
+    case flag of 
+        Lang lang -> Just lang 
+        _ -> getLang flags
 
 getInFiles :: [Flag] -> Maybe String
 getInFiles [] = Nothing
@@ -79,4 +89,14 @@ main = do
     --putStrLn $ "Flags: " ++ show args
     --putStrLn $ "Words: " ++ show words
     src <- source args words
-    putStrLn $ unlines $ map (doTranslation args) src
+    srcEO <- return (unlines $ map (doTranslation (Dictionary `elem` args)) src)
+    mbk <- lookupEnv keyName
+    putStrLn srcEO
+    case (getLang args, mbk) of
+        (Nothing, _) -> return ()
+        (Just lang, Just key) -> do
+            putStrLn $ "===> " ++ lang ++ " (translation with google) : "
+            rep <- Google.Translate.translate key "eo" lang srcEO
+            putStrLn rep
+        (_, _) -> do
+            putStrLn $ "no key " ++ keyName ++ "in your environement"

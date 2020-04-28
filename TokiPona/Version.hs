@@ -1,3 +1,3 @@
 module TokiPona.Version (version) where
 
-version = "0.0.19.0"
+version = "0.0.20.0"

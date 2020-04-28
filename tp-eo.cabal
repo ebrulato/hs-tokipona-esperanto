@@ -3,7 +3,7 @@ cabal-version:       >=1.10
 -- For further documentation, see http://haskell.org/cabal/users-guide/
 
 name:                tp-eo
-version:             0.0.19.0
+version:             0.0.20.0
 -- synopsis:
 -- description:
 -- bug-reports:
@@ -23,12 +23,19 @@ executable tp-eo
   build-depends:       base >=4.12 && <4.13
                        , containers
                        , text
-  other-modules:       TokiPonaToEsperanto, TokiPona.Version
+                       , wreq
+                       , lens
+                       , aeson
+                       , lens-aeson
+  other-modules:       TokiPona.TokiPonaToEsperanto 
+                       , TokiPona.Version
+                       , Google.Translate
   -- hs-source-dirs:
   default-language:    Haskell2010
 
 Test-Suite tp-eo-testsuite
   Type:                     exitcode-stdio-1.0
   Main-is:                  TestSuite.hs
-  other-modules:            TokiPonaToEsperanto
+  other-modules:            TokiPona.TokiPonaToEsperanto
   Build-depends:            base, QuickCheck, HUnit, containers, text
+  default-language:         Haskell2010
