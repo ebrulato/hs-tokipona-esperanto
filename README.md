@@ -70,7 +70,7 @@ And you can use the dictionary for a better translation.
 
 You can also translate some pure Tokipona text with the ***--in*** parameter.
 
-> $> hs-tokipona-esperanto-exe ***--in=./Text/lesson19.txt*** -d
+> $> hs-tokipona-esperanto-exe ***--in=./text-sample/lesson19.txt*** -d
 
 Now you can try the Google Translation. You just have to get an API KEY for the Google Translate service and add an environnement variable called API_KEY_GOOGLE_TRANSLATE. Note we use the v2 of the API. 
 
