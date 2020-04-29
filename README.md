@@ -64,13 +64,13 @@ We suppose that you have correctly confgured your stack environnement. Now you c
 
 And you can use the dictionary for a better translation.
 
-> $> tp-eo jan pona li wile moku ***-d*** 
+> $> hs-tokipona-esperanto-exe jan pona li wile moku ***-d*** 
 
 > ***amiko*** volas mangxi
 
 You can also translate some pure Tokipona text with the ***--in*** parameter.
 
-> $> tp-eo ***--in=./Text/lesson19.txt*** -d
+> $> hs-tokipona-esperanto-exe ***--in=./Text/lesson19.txt*** -d
 
 Now you can try the Google Translation. You just have to get an API KEY for the Google Translate service and add an environnement variable called API_KEY_GOOGLE_TRANSLATE. Note we use the v2 of the API. 
 
