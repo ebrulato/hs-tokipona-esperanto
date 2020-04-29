@@ -1,0 +1,56 @@
+name:                hs-tokipona-esperanto
+version:             0.0.20.0
+github:              "ebrulato/hs-tokipona-esperanto"
+license:             MIT
+author:              "ebrulato"
+maintainer:          "eric.brulatout@gmail.com"
+copyright:           "ebr2019"
+
+extra-source-files:
+- README.md
+- CHANGELOG.md
+- LICENSE
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/ebrulato/hs-tokipona-esperanto#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- containers
+- text
+- lens
+- aeson
+- aeson-lens
+- wreq
+
+library:
+  source-dirs: src
+
+executables:
+  hs-tokipona-esperanto-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - hs-tokipona-esperanto
+
+tests:
+  hs-tokipona-esperanto-test:
+    main:                TestSuite.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - hs-tokipona-esperanto
+    - HUnit

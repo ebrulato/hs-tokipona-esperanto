@@ -40,38 +40,43 @@ In the future, one of my intent is to integrate the existing dictionnaries. Curr
 
 # Installation
 
-The module as been developed in Haskell, so you must follow the installation of [***cabal***](https://www.haskell.org/cabal/) ;)
+The module as been developed in Haskell, so you must follow the installation of [***stack***](https://docs.haskellstack.org/en/stable/README/) ;)
 
 ## Test the module
 
-> $> cabal run tp-eo-testsuite
+> $> stack test
 
 and you wil have something like :
 
-> Cases: 810  Tried: 810  Errors: 0  Failures: 0
+> Cases: 814  Tried: 814  Errors: 0  Failures: 0
 
 ## The CLI version
 
 To compile an install the CLI version, 
 
-> $> cabal install tp-eo --installdir=**your bin path**
+> $> stack build --copy-bins
 
-Now you can use the command line interface of the tool
+We suppose that you have correctly confgured your stack environnement. Now you can use the command line interface of the tool. 
 
-> $> tp-eo jan pona li wile moku
+> $> hs-tokipona-esperanto-exe jan pona li wile moku
 
 > bona persono volas mangxi
 
 And you can use the dictionary for a better translation.
 
-> $> tp-eo jan pona li wile moku -d 
-
-You can also translate some pure Tokipona text with the ***--in*** parameter.
-
-> $> tp-eo --in=./Text/lesson19.txt -d
+> $> tp-eo jan pona li wile moku ***-d*** 
 
 > ***amiko*** volas mangxi
 
+You can also translate some pure Tokipona text with the ***--in*** parameter.
+
+> $> tp-eo ***--in=./Text/lesson19.txt*** -d
+
+Now you can try the Google Translation. You just have to get an API KEY for the Google Translate service and add an environnement variable called API_KEY_GOOGLE_TRANSLATE. Note we use the v2 of the API. 
+
+> $> hs-tokipona-esperanto-exe --in=./text-sample/chewbacca-defense.txt -d ***--lang=en*** 
+
+See a best, but manual translation here : http://tokipona.net/tp/janpije/chewbacca.php
 
 ## Compile the Web Service version 
 

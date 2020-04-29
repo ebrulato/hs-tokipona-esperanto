@@ -3,6 +3,7 @@
 ## 0.0.20.0 -- 2020-04-26
 
 * First version of the command line tp-eo
+* Cabal -> Stack
 
 ## 0.0.19.0 -- 2020-04-25
 
