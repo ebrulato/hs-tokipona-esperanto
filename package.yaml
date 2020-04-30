@@ -26,7 +26,6 @@ dependencies:
 - text
 - lens
 - aeson
-- aeson-lens
 - wreq
 
 library:

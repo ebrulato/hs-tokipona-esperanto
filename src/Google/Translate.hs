@@ -8,7 +8,7 @@ import GHC.Generics (Generic)
 import Network.Wreq
 import Data.Map (Map)
 
--- Data sent to google
+-- Data sent to google 
 
 data PostData = PostData {
     q :: String

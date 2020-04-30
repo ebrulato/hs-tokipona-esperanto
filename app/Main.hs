@@ -2,14 +2,11 @@ module Main where
 
 import TokiPona.TokiPonaToEsperanto
 import TokiPona.Version
---import Control.Monad
---import Data.Char
 import Data.List
 import System.Console.GetOpt
 import System.Environment
 import System.Exit
 import System.IO
---import Text.Printf
 import Google.Translate
 
 keyName = "API_KEY_GOOGLE_TRANSLATE"
@@ -84,8 +81,6 @@ main :: IO ()
 main = do
     prgName <- getProgName
     (args, words) <- getArgs >>= parse prgName
-    --putStrLn $ "Flags: " ++ show args
-    --putStrLn $ "Words: " ++ show words
     src <- source args words
     srcEO <- return (unlines $ map (doTranslation (Dictionary `elem` args)) src)
     mbk <- lookupEnv keyName

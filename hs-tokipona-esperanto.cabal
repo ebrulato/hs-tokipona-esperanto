@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: fdebf3be19a16e7fb83bc77d92478eedf863b66864bf60fbe05dbbd2e66a7df5
+-- hash: b913755ac46398abe671db604ccf26fccb4be9bd5419fd3dfbaaf59d63d5750c
 
 name:           hs-tokipona-esperanto
 version:        0.0.20.1
@@ -37,7 +37,6 @@ library
       src
   build-depends:
       aeson
-    , aeson-lens
     , base >=4.7 && <5
     , containers
     , lens
@@ -54,7 +53,6 @@ executable hs-tokipona-esperanto-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
-    , aeson-lens
     , base >=4.7 && <5
     , containers
     , hs-tokipona-esperanto
@@ -74,7 +72,6 @@ test-suite hs-tokipona-esperanto-test
   build-depends:
       HUnit
     , aeson
-    , aeson-lens
     , base >=4.7 && <5
     , containers
     , hs-tokipona-esperanto
