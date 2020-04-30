@@ -26,7 +26,7 @@ data Flag
 
 flags =
        [Option ['d']    []          (NoArg Dictionary)         "Use the conpound words tokipona dictionnary."
-       ,Option []       ["lang"]    (ReqArg Lang "xx")         "google tranlation in xx (iso-639-1), if supported (SOON)"
+       ,Option []       ["lang"]    (ReqArg Lang "xx")         "google tranlation in xx (iso-639-1), if supported."
        ,Option []       ["in"]      (ReqArg FileIn "FILE")     "input file with a tokipona text."
        ,Option []       ["out"]     (ReqArg FileOut "FILE")    "output file with the translation. (SOON)"
        ,Option ['h']    ["help"]    (NoArg Help)               "Print this help message"
@@ -55,26 +55,24 @@ parse prgName argv = case getOpt Permute flags argv of
 
 doTranslation useDico = if useDico then translateWithDico else TokiPona.TokiPonaToEsperanto.translate
 
-getLang :: [Flag] -> Maybe String
-getLang [] = Nothing
-getLang (flag:flags) = 
-    case flag of 
-        Lang lang -> Just lang 
-        _ -> getLang flags
+getFlag :: (Flag -> Maybe String) -> [Flag] -> Maybe String
+getFlag f [] = Nothing
+getFlag f (flag:flags) = 
+    case f flag of 
+        Just s -> Just s 
+        Nothing -> getFlag f flags
 
-getInFiles :: [Flag] -> Maybe String
-getInFiles [] = Nothing
-getInFiles (flag:flags) = 
-    case flag of 
-        FileIn path -> Just path 
-        _ -> getInFiles flags
+getLang = getFlag (\n -> case n of 
+                        Lang s -> Just s 
+                        _ -> Nothing )
 
-getOutFiles :: [Flag] -> Maybe String
-getOutFiles [] = Nothing
-getOutFiles (flag:flags) = 
-    case flag of 
-        FileOut path -> Just path 
-        _ -> getOutFiles flags
+getInFiles = getFlag (\n -> case n of 
+                        FileIn s -> Just s 
+                        _ -> Nothing )
+
+getOutFiles = getFlag (\n -> case n of 
+                        FileOut s -> Just s 
+                        _ -> Nothing )  
 
 source :: [Flag] -> [String] -> IO [String]
 source args words = 

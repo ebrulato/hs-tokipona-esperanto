@@ -40,7 +40,7 @@ In the future, one of my intent is to integrate the existing dictionnaries. Curr
 
 # Installation
 
-The module as been developed in Haskell, so you must follow the installation of [***stack***](https://docs.haskellstack.org/en/stable/README/) ;)
+The module has been developed in Haskell, so you must follow the installation of [***stack***](https://docs.haskellstack.org/en/stable/README/) ;)
 
 ## Test the module
 
@@ -93,5 +93,5 @@ TODO
 
 ## TODO List:
 
-* Integrates Google Translate tool
+* Integrates Google Translate tool v3
 * Esperanto version of this file
