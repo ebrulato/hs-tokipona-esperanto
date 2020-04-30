@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 32325e719d211eafc308884185ac6463905caaeaf93f0bd21d74374f3d98ccb9
+-- hash: fdebf3be19a16e7fb83bc77d92478eedf863b66864bf60fbe05dbbd2e66a7df5
 
 name:           hs-tokipona-esperanto
-version:        0.0.20.0
+version:        0.0.20.1
 description:    Please see the README on GitHub at <https://github.com/ebrulato/hs-tokipona-esperanto#readme>
 homepage:       https://github.com/ebrulato/hs-tokipona-esperanto#readme
 bug-reports:    https://github.com/ebrulato/hs-tokipona-esperanto/issues
