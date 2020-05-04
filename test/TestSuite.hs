@@ -810,4 +810,5 @@ main = runTestTT $ TestList [
     , lesson18
     , check2 "ala! sina sona e nimi ali! pini a! sina sona pona e toki pona. toki pona li pona ala pona tawa sina? mi wile e ni: ona li pona tawa sina. sina wile pali e seme kepeken sona sin sina? o kama tawa kulupu \"Facebook\" pi toki pona. o lukin e lipu ante mi anu lipu pi jan ante. o pali e lipu sin! o pana e sona pi toki pona tawa jan ante. tenpo kama la sina ken tawa kulupu pona pi toki pona. sina kama tawa ma \"Georgia\" lon ma Mewika la o pana e lipu tawa mi tan ni: mi wile lukin e sina! mi lon ma tomo \"Macon\"." 
     "nenio! vi scias cxion nomojn! fino ah! vi scias bone tokiponon. cxu tokipono bonas vin? mi volas tion: li bonas vin. vi volas fari kion per via alia scio? venu grupon \"Facebook\" de tokipono. vidu mian alian paperon aux paperon de alia persono. faru alian paperon! donu scion de tokipono al alia persono. estontece vi povas iri bonan grupon de tokipono. dum/se vi ekigas/ekvenas landon \"Georgia\" en Usono, donu paperon al mi venas el tio: mi volas vidi vin! mi estas urbe \"Macon\"."
+    , TestCase $ assertEqual "compund word size" 170 nbCompoundWord 
     ]

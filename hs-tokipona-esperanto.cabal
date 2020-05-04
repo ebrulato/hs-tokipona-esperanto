@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b913755ac46398abe671db604ccf26fccb4be9bd5419fd3dfbaaf59d63d5750c
+-- hash: a3ef3a9e56fe98f2a49a1e3f1fb2c7d99d2c7d326c57acc6a7b349ce404f768f
 
 name:           hs-tokipona-esperanto
-version:        0.0.20.1
+version:        0.0.21.0
 description:    Please see the README on GitHub at <https://github.com/ebrulato/hs-tokipona-esperanto#readme>
 homepage:       https://github.com/ebrulato/hs-tokipona-esperanto#readme
 bug-reports:    https://github.com/ebrulato/hs-tokipona-esperanto/issues
@@ -38,7 +38,9 @@ library
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
     , containers
+    , http-client
     , lens
     , text
     , wreq
@@ -54,10 +56,36 @@ executable hs-tokipona-esperanto-exe
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
     , containers
     , hs-tokipona-esperanto
+    , http-client
     , lens
     , text
+    , wreq
+  default-language: Haskell2010
+
+executable hs-tokipona-esperanto-servant
+  main-is: Main.hs
+  other-modules:
+      Paths_hs_tokipona_esperanto
+  hs-source-dirs:
+      api
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , containers
+    , hs-tokipona-esperanto
+    , http-client
+    , lens
+    , servant
+    , servant-server
+    , text
+    , time
+    , transformers
+    , warp
     , wreq
   default-language: Haskell2010
 
@@ -73,8 +101,10 @@ test-suite hs-tokipona-esperanto-test
       HUnit
     , aeson
     , base >=4.7 && <5
+    , bytestring
     , containers
     , hs-tokipona-esperanto
+    , http-client
     , lens
     , text
     , wreq

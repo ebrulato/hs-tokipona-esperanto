@@ -1,4 +1,4 @@
-module TokiPona.TokiPonaToEsperanto (translate, translateWithDico, isValidExternalWord) where 
+module TokiPona.TokiPonaToEsperanto (translate, translateWithDico, isValidExternalWord, nbCompoundWord) where 
 
 import qualified Data.Map as Map
 import qualified Data.List as List
@@ -722,6 +722,10 @@ dico = Map.fromList
 -- toki Tosulaki	Dothraki
 
     ]
+
+
+nbCompoundWord :: Int
+nbCompoundWord = length dico - 127
 
 errorForm s = "[" ++ s ++ "]"
 quickWord w = Word (w++"-gen") w (w++"a") (w++"e") (w++"as") (w++"igas")

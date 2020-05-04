@@ -1,5 +1,5 @@
 name:                hs-tokipona-esperanto
-version:             0.0.20.1
+version:             0.0.21.0
 github:              "ebrulato/hs-tokipona-esperanto"
 license:             MIT
 author:              "ebrulato"
@@ -24,14 +24,31 @@ dependencies:
 - base >= 4.7 && < 5
 - containers
 - text
-- lens
 - aeson
+- lens
 - wreq
+- http-client
+- bytestring
 
 library:
   source-dirs: src
 
+
 executables:
+  hs-tokipona-esperanto-servant:
+    main:                Main.hs
+    source-dirs:         api
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - hs-tokipona-esperanto
+    - servant-server
+    - servant
+    - time
+    - warp
+    - transformers
   hs-tokipona-esperanto-exe:
     main:                Main.hs
     source-dirs:         app

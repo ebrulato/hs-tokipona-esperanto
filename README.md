@@ -56,7 +56,7 @@ To compile an install the CLI version,
 
 > $> stack build --copy-bins
 
-We suppose that you have correctly confgured your stack environnement. Now you can use the command line interface of the tool. 
+We suppose that you have correctly configured your stack environnement. Now you can use the command line interface of the tool. 
 
 > $> hs-tokipona-esperanto-exe jan pona li wile moku
 

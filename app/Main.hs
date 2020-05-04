@@ -28,6 +28,7 @@ flags =
        ,Option []       ["out"]     (ReqArg FileOut "FILE")    "output file with the translation. (SOON)"
        ,Option ['h']    ["help"]    (NoArg Help)               "Print this help message"
        ,Option ['v']    []          (NoArg Version)            "Print the version of the tool"
+       ,Option ['v']    []          (NoArg Version)            "Print the version of the tool"
        ]
 
 parse prgName argv = case getOpt Permute flags argv of
@@ -46,7 +47,7 @@ parse prgName argv = case getOpt Permute flags argv of
             hPutStrLn stderr (concat errs ++ usageInfo (header prgName) flags)
             exitWith (ExitFailure 1)
 
-        where header prgName = "Usage: "++ prgName ++ " [-dh] [-lang=fr|en|...] [-in=PATH] [-out=PATH] [word ...]"
+        where header prgName = "Usage: "++ prgName ++ " [-dh] [--lang=fr|en|...] [--in=PATH] [--out=PATH] [word ...]\n\nCompound Word Dictionary size is "++ (show nbCompoundWord) ++"\n"
 
 
 
@@ -90,6 +91,8 @@ main = do
         (Just lang, Just key) -> do
             putStrLn $ "===> " ++ lang ++ " (translation with google) : "
             rep <- Google.Translate.translate key "eo" lang srcEO
-            putStrLn rep
+            case rep of
+                Right translation -> putStrLn translation
+                Left error -> putStrLn $ "ERROR : " ++ error 
         (_, _) -> do
             putStrLn $ "no key " ++ keyName ++ "in your environement"
