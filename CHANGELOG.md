@@ -1,5 +1,9 @@
 # Revision history for tp-eo
 
+## 0.0.22.0 -- 2020-05-05
+* expose a swagger file
+* update the README
+
 ## 0.0.21.0 -- 2020-05-04
 * enhance error management when calling Google.Translate.translate
 * add a Servant API and server

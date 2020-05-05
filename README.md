@@ -31,7 +31,7 @@ We loose a few part of the orignal meaning, but most of the time we keep suffici
 
 ### A dictionary 
 
-_jna Pije_ provides us some common structures used in tokipona to express common words:
+_jan Pije_ provides us some common structures used in tokipona to express common words:
 
 * _tomo tawa_ : _"a moving builded structure"_ which is often translated as **car** or **vehicle**. 
 * _tomo tawa kon_ : _"an aerian moving builded structure"_... *plane*
@@ -44,6 +44,9 @@ The module has been developed in Haskell, so you must follow the installation of
 
 ## Test the module
 
+Theses tests cover only the translation part of the module.
+The CLI and the Web Service (Servant) are not covered.
+
 > $> stack test
 
 and you wil have something like :
@@ -52,7 +55,7 @@ and you wil have something like :
 
 ## The CLI version
 
-To compile an install the CLI version, 
+To compile and install the CLI version, 
 
 > $> stack build --copy-bins
 
@@ -78,9 +81,31 @@ Now you can try the Google Translation. You just have to get an API KEY for the 
 
 See a best, but manual translation here : http://tokipona.net/tp/janpije/chewbacca.php
 
-## Compile the Web Service version 
+## Compile and start the Web Service version 
 
-TODO
+To compile and start the Web Server version, 
+
+> $> stack run hs-tokipona-esperanto-servant
+
+You have to wait fo the following display
+
+> Running on port 8081
+
+Then you can use the script *callLocalhostServer.sh* to check that every thing is allright.
+
+```
+{"amplekso":170,"versiono":"0.0.22.0"} 
+[{"lingva":"eo","vortara":["mi amas vian amikon"],"kruda":["mi amas vian bonan personon"]}]
+please check the dest language or ask the administrator
+```
+
+### How to get the *swagger.json*
+
+You can fetch the swagger configuration with this request:
+
+> $> curl -X GET http://localhost:8081/swagger.json
+
+***Limlitations*** : currently it doesn't support https call :( , so on the online https://editor.swagger.io/ tool you can't make any call. 
 
 ### Deployment on _Google Cloud Run_
 
@@ -93,5 +118,9 @@ TODO
 
 ## TODO List:
 
+* Use a DB on the Cloud
+* Use Google Cloud Run
+* add environnement variable to update the server name and the port number
+* Do the FARU notes
 * Integrates Google Translate tool v3
 * Esperanto version of this file

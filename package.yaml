@@ -1,5 +1,5 @@
 name:                hs-tokipona-esperanto
-version:             0.0.21.0
+version:             0.0.22.0
 github:              "ebrulato/hs-tokipona-esperanto"
 license:             MIT
 author:              "ebrulato"
@@ -49,6 +49,8 @@ executables:
     - time
     - warp
     - transformers
+    - servant-swagger
+    - swagger2
   hs-tokipona-esperanto-exe:
     main:                Main.hs
     source-dirs:         app
