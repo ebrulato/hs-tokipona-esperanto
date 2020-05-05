@@ -105,7 +105,9 @@ You can fetch the swagger configuration with this request:
 
 > $> curl -X GET http://localhost:8081/swagger.json
 
-***Limlitations*** : currently it doesn't support https call :( , so on the online https://editor.swagger.io/ tool you can't make any call. 
+***Limitations*** : 
+* currently it doesn't support https call :( , so on the online https://editor.swagger.io/ tool you can't make any call. 
+* the implementation used to expose the swagger file is not very well documented. It seems that the team didn't finish the analyze for this behavior. But the capacity to expose a swagger based on the real code deployed is so important for me that I used it.
 
 ### Deployment on _Google Cloud Run_
 
