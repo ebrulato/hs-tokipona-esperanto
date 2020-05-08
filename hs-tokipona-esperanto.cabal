@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: bb705fa0588a24131677865992dd459322c42b58fb70e1723b6415a42fb6a37e
+-- hash: 904e23ccd112743aa6c566e96b1fcb41605c9aa3ff95d0483267afaf34227ebe
 
 name:           hs-tokipona-esperanto
-version:        0.0.22.0
+version:        0.0.23.0
 description:    Please see the README on GitHub at <https://github.com/ebrulato/hs-tokipona-esperanto#readme>
 homepage:       https://github.com/ebrulato/hs-tokipona-esperanto#readme
 bug-reports:    https://github.com/ebrulato/hs-tokipona-esperanto/issues
@@ -87,6 +87,7 @@ executable hs-tokipona-esperanto-servant
     , text
     , time
     , transformers
+    , wai-cors
     , warp
     , wreq
   default-language: Haskell2010

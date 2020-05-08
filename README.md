@@ -83,13 +83,21 @@ See a best, but manual translation here : http://tokipona.net/tp/janpije/chewbac
 
 ## Compile and start the Web Service version 
 
+You can configure your server with 
+
+
+|Env variable|Description|Default|
+|------------|-----------|-------|
+|WAI_PORT|Port number used|8081|
+|WAI_SERVER_NAME|The name of the server, used for the swagger|localhost|
+
 To compile and start the Web Server version, 
 
 > $> stack run hs-tokipona-esperanto-servant
 
 You have to wait fo the following display
 
-> Running on port 8081
+> Running on port localhost:8081
 
 Then you can use the script *callLocalhostServer.sh* to check that every thing is allright.
 
@@ -105,9 +113,20 @@ You can fetch the swagger configuration with this request:
 
 > $> curl -X GET http://localhost:8081/swagger.json
 
+You can use the online version https://editor.swagger.io/ and copy/paste the swagger.json to be able to test and generate your client's stub.
+
+But you can also install locally a version of swagger.io (see https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/installation.md)
+
+> $> docker pull swaggerapi/swagger-ui
+
+> $> docker run -p 80:8080 swaggerapi/swagger-ui
+
+and you just have to go to http://localhost/ and fill the URL, but in this version it seems that you can't generate client's stub. 
+
+
 ***Limitations*** : 
-* currently it doesn't support https call :( , so on the online https://editor.swagger.io/ tool you can't make any call. 
-* the implementation used to expose the swagger file is not very well documented. It seems that the team didn't finish the analyze for this behavior. But the capacity to expose a swagger based on the real code deployed is so important for me that I used it.
+* the implementation used to expose the swagger file is not very well documented. It seems that the team didn't finish the analyze for this behavior. But the capacity to expose a swagger based on the real code deployed is so important for me that I used it. (see https://github.com/haskell-servant/servant-swagger/issues/17)
+* I tried to use this article https://github.com/input-output-hk/cardano-wallet-legacy/wiki/Specifying-exceptions-with-Servant-and-Swagger to be able to have a better support of the errors, but the current version of swagger for servant don't support corrctly the package https://hackage.haskell.org/package/servant-checked-exceptions... There is an other discussion here https://github.com/haskell-servant/servant-swagger/issues/59, but I was not able to use it ;( I will try this later.  
 
 ### Deployment on _Google Cloud Run_
 
@@ -120,9 +139,11 @@ TODO
 
 ## TODO List:
 
+* use 
 * Use a DB on the Cloud
 * Use Google Cloud Run
-* add environnement variable to update the server name and the port number
-* Do the FARU notes
+* FARU : optimumo : se la vortaro faras saman versionon ke la kruda traduko, gxi ne devas peti al Google 
+* FARU : optimumo : limo de peto 
+* FARU : optimumo : se la esperanta traduko havas eraron, gxi ne devus peti al Google novan tradaukon.  
 * Integrates Google Translate tool v3
 * Esperanto version of this file
